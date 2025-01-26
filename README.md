@@ -76,31 +76,26 @@ A Dockerfile defines the instructions for building a containerized environment. 
 
 ➡️ RapidAPI Sports Highlights API
 The API fetches NCAA game highlights in JSON format, including video URLs and metadata such as game details or teams involved.
-
 ⬇️ Dockerized code sends a request to the API then JSON responses containing video URLs and related data are retrieved.
 
 
 ➡️ Storing JSON in Amazon S3
 After fetching the JSON response, the first stage is to store it in an S3 bucket for future access or further processing.
-
 ⬇️Once the data is retrieved, it is uploaded to Amazon S3 (designated as the storage for unprocessed data). The S3 bucket acts as a repository for raw metadata from the API.
 
 
 ➡️ Extract and Download the First Video
 The next step is to extract the first video URL from the JSON metadata stored in S3.
-
 ⬇️A script runs (in Docker) to parse the JSON file stored in S3. The first video URL is identified, downloaded, and prepared for storage in another S3 location.
 
 
 ➡️ Storing Video in Another S3 Bucket
 After downloading the video file, it is uploaded to a separate S3 bucket for media storage.
-
 ⬇️This bucket organizes and maintains the original video files in preparation for media enhancement.
 
 
 ➡️ Enhancing the Media Using AWS Elemental MediaConvert
 AWS Elemental MediaConvert is used to enhance the downloaded media, including transcoding, resolution adjustments, and format conversion.
-
 ➡️The raw video file is sent from the S3 bucket to AWS Elemental MediaConvert. MediaConvert processes the video to meet specified requirements, such as resolution, bit rate, or compatibility with other systems. The enhanced video is stored back in an S3 bucket for distribution or archival.
 
 ## **Project Structure**
