@@ -65,7 +65,7 @@ Scroll down until you see the Access Key section
 You will not be able to retrieve your secret access key so if you don't have that somewhere, you need to create an access key.
 
 ## **Technical Diagram**
-![Architecture Diagram](https://github.com/user-attachments/assets/762c3582-c6fe-48b2-b7da-0ff5b86b7970)
+![Architecture Diagram](https://github.com/Lugardesosa/Automated-NCAA-Game-Highlight-Conversion-using-Docker-and-AWS-Elementa-MediaConvert/blob/main/5THDAY~1.PNG)
 
 This architecture automates the workflow for converting and enhancing NCAA sports game highlights using Docker, RapidAPI's Sports Highlights API, Amazon S3, and AWS Elemental MediaConvert. Below is an explanation of the components and the steps involved:
 ➡️ Docker Container
