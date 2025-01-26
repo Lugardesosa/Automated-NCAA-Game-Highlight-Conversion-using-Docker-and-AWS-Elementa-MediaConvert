@@ -68,23 +68,39 @@ You will not be able to retrieve your secret access key so if you don't have tha
 ![Architecture Diagram](https://github.com/Lugardesosa/Automated-NCAA-Game-Highlight-Conversion-using-Docker-and-AWS-Elementa-MediaConvert/blob/main/5THDAY~1.PNG)
 
 This architecture automates the workflow for converting and enhancing NCAA sports game highlights using Docker, RapidAPI's Sports Highlights API, Amazon S3, and AWS Elemental MediaConvert. Below is an explanation of the components and the steps involved:
+
 ➡️ Docker Container
 A Docker container is used to build, tag, and run the integration process with the RapidAPI Sports Highlights API. Docker ensures the environment is consistent across various systems and simplifies deployment.
 A Dockerfile defines the instructions for building a containerized environment. This container likely includes all the necessary Python libraries (requests, boto3) and tools (aws cli) required by the project scripts. By containerizing the environment, you ensure consistency and portability across different deployment scenarios.
+
+
 ➡️ RapidAPI Sports Highlights API
 The API fetches NCAA game highlights in JSON format, including video URLs and metadata such as game details or teams involved.
+
 ⬇️ Dockerized code sends a request to the API then JSON responses containing video URLs and related data are retrieved.
+
+
 ➡️ Storing JSON in Amazon S3
 After fetching the JSON response, the first stage is to store it in an S3 bucket for future access or further processing.
+
 ⬇️Once the data is retrieved, it is uploaded to Amazon S3 (designated as the storage for unprocessed data). The S3 bucket acts as a repository for raw metadata from the API.
+
+
 ➡️ Extract and Download the First Video
 The next step is to extract the first video URL from the JSON metadata stored in S3.
+
 ⬇️A script runs (in Docker) to parse the JSON file stored in S3. The first video URL is identified, downloaded, and prepared for storage in another S3 location.
+
+
 ➡️ Storing Video in Another S3 Bucket
 After downloading the video file, it is uploaded to a separate S3 bucket for media storage.
+
 ⬇️This bucket organizes and maintains the original video files in preparation for media enhancement.
+
+
 ➡️ Enhancing the Media Using AWS Elemental MediaConvert
 AWS Elemental MediaConvert is used to enhance the downloaded media, including transcoding, resolution adjustments, and format conversion.
+
 ➡️The raw video file is sent from the S3 bucket to AWS Elemental MediaConvert. MediaConvert processes the video to meet specified requirements, such as resolution, bit rate, or compatibility with other systems. The enhanced video is stored back in an S3 bucket for distribution or archival.
 
 ## **Project Structure**
@@ -114,7 +130,7 @@ src/
 # START HERE - Local
 ## **Step 1: Clone The Repo**
 ```bash
-git clone https://github.com/alahl1/NCAAGameHighlights.git
+git clone https://github.com/Lugardesosa/Automated-NCAA-Game-Highlight-Conversion-using-Docker-and-AWS-Elementa-MediaConvert.git
 cd src
 ```
 ## **Step 2: Add API Key to AWS Secrets Manager**
