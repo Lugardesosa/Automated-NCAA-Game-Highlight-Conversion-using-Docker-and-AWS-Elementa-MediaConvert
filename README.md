@@ -67,6 +67,8 @@ You will not be able to retrieve your secret access key so if you don't have tha
 ## **Technical Diagram**
 ![Architecture Diagram](https://github.com/Lugardesosa/Automated-NCAA-Game-Highlight-Conversion-using-Docker-and-AWS-Elementa-MediaConvert/blob/main/5THDAY~1.PNG)
 
+
+
 This architecture automates the workflow for converting and enhancing NCAA sports game highlights using Docker, RapidAPI's Sports Highlights API, Amazon S3, and AWS Elemental MediaConvert. Below is an explanation of the components and the steps involved:
 
 ➡️ Docker Container
@@ -122,7 +124,7 @@ src/
     └── outputs.tf
 ```
 
-# START HERE - Local
+
 ## **Step 1: Clone The Repo**
 ```bash
 git clone https://github.com/Lugardesosa/Automated-NCAA-Game-Highlight-Conversion-using-Docker-and-AWS-Elementa-MediaConvert.git
@@ -190,7 +192,7 @@ aws mediaconvert describe-endpoints
 ```bash
 chmod 600 .env
 ```
-## **Step 6: Locally Buikd & Run The Docker Container**
+## **Step 6: Locally Build & Run The Docker Container**
 Run:
 ```bash
 docker build -t highlight-processor .
@@ -207,17 +209,13 @@ Optional - Confirm there is a video uploaded to s3://<your-bucket-name>/videos/f
 
 Optional - Confirm there is a video uploaded to s3://<your-bucket-name>/processed_videos/
 
-### **What We Learned**
-1. Working with Docker and AWS Services
-2. Identity Access Management (IAM) and least privilege
-3. How to enhance media quality 
 
 ### **Future Enhancements**
 1. Using Terraform to enhance the Infrastructure as Code (IaC)
 2. Increasing the amount of videos process and converted with AWS Media Convert
 3. Change the date from static (specific point in time) to dyanmic (now, last 30 days from today's date,etc)
 
-# Part 2 - Terraform Bonus
+# Part 2 - Terraform (Optional)
 
 ### **Setup terraform.tfvars File**
 1. In the github repo, there is a resources folder and copy the entire contents
@@ -287,11 +285,6 @@ bash ncaaprojectcleanup.sh
 ### **Review Video Files**
 1. Navigate to the S3 Bucket and confirm there is a json video in the highlights folder and a video in the videos folder
 
-### **What We Learned**
-1. Deploying local docker images to ECR 
-2. A high level overview of terraform files
-3. Networking - VPCs, Internet Gateways, private subnets and public subnets
-4. SSM for saving secrets and pulling into terraform
 
 ### **Future Enhancements**
 1. Automating the creation of VPCs/networking infra, media endpoint
